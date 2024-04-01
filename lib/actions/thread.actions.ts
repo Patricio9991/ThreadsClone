@@ -97,7 +97,7 @@ export async function fetchThreadById( id: string){
             //     },
             //   ],
         }).exec()    
-        console.log(thread)
+        
         
         
         return thread

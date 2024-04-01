@@ -1,11 +1,13 @@
 "use server"
 
-import path from "path/win32"
+
 import User from "../models/user.model"
 import { connectToDB } from "./mongoose"
 import { revalidatePath } from "next/cache"
 import { useRouter } from "next/navigation"
 import Thread from "../models/thread.models"
+import { SortOrder } from "mongoose"
+
 
 
 interface Params{
@@ -86,3 +88,41 @@ export async function fetchUserProfileThreads(userId: string){
     }
 
 }
+
+
+interface searchParams {
+    userId:string,
+    searchString?:string,
+    pageNumber?:number,
+    pageSize?: number,
+    sortBy?: SortOrder
+}
+export async function searchUsers({
+    userId, searchString, pageNumber = 1, pageSize = 20, sortBy = "desc"}:searchParams){
+
+    try{
+        
+        
+
+        const skipAmount = (pageNumber - 1 ) * pageSize
+
+        const searched = await User.find({id:{$ne:userId}})
+        .skip(skipAmount)
+        .limit(pageSize)
+
+
+        console.log(searched.length)
+        return searched
+
+
+
+
+
+    }catch(err){
+        console.log(err)
+    }
+
+}
+console.log('********************************************************')
+ searchUsers({userId:'user_2dm7AZWbAbcGzFJ9lqK7XzcRNAU'})
+console.log('********************************************************')

@@ -19,7 +19,7 @@ export default async function Page({params}:{params: {id:string}}){
     const userInfo = await fetchUser(params.id)
 
     if(!userInfo?.onboarded) redirect('/onboarding')
-    console.log(userInfo.threads.length)
+    
 
 
     return(

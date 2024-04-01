@@ -14,8 +14,7 @@ export default async function ThreadsTab({currentUserId,accountId,accountType}:P
     const result = await fetchUserProfileThreads(accountId)
 
     if(!result) redirect('/')
-    console.log('/**************/')
-    console.log(result.threads[0].author.image)
+
 
     return(
     <section className="mt-9 flex flex-col gap-10">

@@ -51,7 +51,7 @@ export default function Comments({threadId,currentUserImg,currentUserId}:Props){
     const path = usePathname()
 
     const onSubmit = async (values: z.infer<typeof CommentValidation>)=>{
-        console.log(values.thread)
+       
       await addCommentToThread(
         threadId,
         values.thread,
@@ -80,15 +80,15 @@ export default function Comments({threadId,currentUserImg,currentUserId}:Props){
                   render={({ field }) => (
                    
                     <FormItem className="flex gap-3 items-center w-full">
-                
-                        <Image 
-                        src={currentUserImg}
-                        alt="Profile picture"
-                        width={50}
-                        height={50}
-                        priority
-                        className="rounded-full object-cover"
-                        />
+                        <FormLabel>
+                          <Image
+                            src={currentUserImg}
+                            alt='current_user'
+                            width={50}
+                            height={50}
+                            className='rounded-full object-fit'
+                          />
+                        </FormLabel>
                     
                       <FormControl className="border-none bg-transparent">
                         <Input 
