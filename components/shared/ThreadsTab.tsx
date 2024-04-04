@@ -12,6 +12,7 @@ interface Params {
 export default async function ThreadsTab({currentUserId,accountId,accountType}:Params){
 
     const result = await fetchUserProfileThreads(accountId)
+    
 
     if(!result) redirect('/')
 

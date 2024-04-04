@@ -132,7 +132,7 @@ export async function addCommentToThread(
             parentId:threadId
         })
 
-        console.log(commentThread)
+        
 
         await commentThread.save()
 
