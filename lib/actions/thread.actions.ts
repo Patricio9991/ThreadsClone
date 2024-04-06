@@ -59,7 +59,8 @@ export async function fetchThread(pageNumber = 1, pageSize = 20){
         const post = await postQuery.exec()
 
         const isNext = totalPostCount > skipAmount + post.length
-
+        
+        console.log(post)
         return {post, isNext}
 
 
